@@ -1,0 +1,9 @@
+.out {
+  position: relative;
+  height: 80vh;
+}
+.content_banner {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}

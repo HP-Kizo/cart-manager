@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+* {
+  font-family: "Lato", sans-serif;
+}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +38,114 @@
   to {
     transform: rotate(360deg);
   }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+html {
+  font-size: 10px;
+}
+.catogery a:hover {
+  opacity: 0.6;
+}
+.background {
+  background-color: black;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#popup {
+  margin-top: 90px;
+}
+.name_product {
+  padding-top: 40px;
+}
+.background {
+  background-color: rgba(0, 0, 0, 0.756);
+}
+.close_popup {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+}
+.text_product {
+  overflow: auto;
+  height: 400px;
+}
+button img {
+  animation: zoom 0.7s;
+}
+@keyframes zoom {
+  0% {
+    transform: scale(0.6);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.deco {
+  position: absolute;
+  background-color: azure;
+  top: 0;
+  width: 100px;
+}
+.live_chat {
+  position: fixed;
+
+  bottom: 5%;
+  max-width: 60px !important;
+  left: 90%;
+  padding: 4px;
+  background: transparent;
+}
+.bi-messenger {
+  border-radius: 50%;
+}
+#box_chat {
+  position: fixed;
+  top: 30%;
+  left: 65%;
+  animation: chat 0.7s;
+}
+@keyframes chat {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#search {
+  position: absolute;
+  left: 33%;
+}
+
+.quantity {
+  position: relative;
+}
+.down_quantity {
+  position: absolute;
+  left: 40%;
+}
+.up_quantity {
+  position: absolute;
+  top: 0;
+  left: 65%;
+}
+.quantityItem {
+  position: absolute;
+  top: 0;
+  left: 55%;
+  padding: 0;
 }

@@ -1,0 +1,40 @@
+.all {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: antiquewhite;
+}
+.header {
+  margin-top: 100px;
+  padding: 60px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.h2 {
+  font-size: 25px;
+  font-style: italic;
+}
+.p {
+  font-size: 20px;
+  font-weight: 200;
+}
+.body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 0 20px;
+}
+.tableCart {
+  text-align: center;
+}
+.cartTotal {
+  background-color: blue;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.title p {
+  font-weight: 500;
+  background-color: beige;
+}

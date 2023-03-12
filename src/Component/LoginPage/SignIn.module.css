@@ -1,0 +1,116 @@
+.div {
+  background-color: aliceblue;
+  height: 100vh;
+  color: rgb(93, 93, 90);
+  font-style: italic;
+}
+.img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
+  height: 60vh;
+}
+.signUP {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 320px;
+  height: 55vh;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0px 3px 3px 1px rgb(164, 164, 164),
+    0px 0px 3px 5px rgb(192, 183, 183);
+}
+.signUP h2 {
+  padding: 30px;
+  font-size: 20px;
+}
+.signUP input {
+  border: 0.1px solid rgba(0, 0, 0, 0.345);
+  display: inline-block;
+  width: 90%;
+  height: 60px;
+}
+.signUP button {
+  margin: 0 auto;
+  color: aliceblue;
+  margin-top: 20px;
+}
+.signUP .button {
+  background-color: rgba(0, 0, 0, 0.76);
+}
+.no_button {
+  background-color: rgb(175, 201, 201);
+}
+.notice {
+  text-align: left;
+  color: rgb(255, 38, 0);
+}
+/* .login {
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+} */
+a {
+  text-decoration: none;
+}
+/* .control {
+  margin: 1rem 0;
+  display: flex;
+  align-items: stretch; */
+/* flex-direction: row;
+} */
+.control {
+  min-width: 300px;
+}
+
+/* .control label,
+.control input {
+  display: block;
+} */
+/* 
+.control label {
+  font-weight: bold;
+  flex: 1;
+  color: #464646;
+  margin-bottom: 0.5rem;
+} */
+
+.control input {
+  font: inherit;
+  padding: 0.35rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.control input:focus {
+  outline: none;
+  border-color: #4f005f;
+  background: #f6dbfc;
+}
+
+.control.invalid input {
+  border-color: red;
+  background: #fbdada;
+}
+
+.actions {
+  text-align: center;
+}
+
+/* @media (min-width: 768px) {
+  .control {
+    align-items: center;
+    flex-direction: row;
+  }
+} */
+.change .change_button {
+  color: rgb(37, 96, 190);
+  margin: 0 auto;
+  font-style: italic;
+  padding: 0;
+}

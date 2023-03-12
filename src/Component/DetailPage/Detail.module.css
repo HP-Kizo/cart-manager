@@ -1,0 +1,47 @@
+.wrap {
+  padding-top: 100px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.div_img {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 1fr;
+  height: 400px;
+}
+.wrap_img {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+.img_big {
+  width: 90%;
+}
+.img_small {
+  width: 60%;
+}
+.div_detail h2 {
+  font-size: 30px;
+  font-style: italic;
+}
+p {
+  padding-left: 30px;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 50;
+}
+.label {
+  display: flex;
+  padding-left: 20px;
+}
+.button {
+  background-color: black;
+  font-style: italic;
+
+  color: aliceblue;
+  padding: 0 20px;
+}
+.context {
+  height: 120px;
+  overflow: auto;
+}

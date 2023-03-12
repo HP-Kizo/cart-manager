@@ -1,0 +1,54 @@
+.div {
+  background-color: aliceblue;
+  height: 100vh;
+  color: rgb(93, 93, 90);
+  font-style: italic;
+}
+.img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
+  height: 60vh;
+}
+.signUP {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 320px;
+  height: 70vh;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0px 3px 3px 1px rgb(164, 164, 164),
+    0px 0px 3px 5px rgb(192, 183, 183);
+}
+.signUP h2 {
+  padding: 30px;
+  font-size: 20px;
+}
+.signUP input {
+  border: 0.1px solid rgba(0, 0, 0, 0.345);
+  display: inline-block;
+  width: 90%;
+  height: 60px;
+}
+.signUP button {
+  padding: 20px;
+  margin: 0 auto;
+  width: 90%;
+  color: aliceblue;
+  margin-top: 20px;
+}
+.button {
+  background-color: rgba(0, 0, 0, 0.76);
+}
+.no_button {
+  background-color: rgb(175, 201, 201);
+}
+.span {
+  color: rgb(175, 201, 201);
+}
+.change {
+}

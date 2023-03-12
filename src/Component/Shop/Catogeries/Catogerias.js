@@ -1,0 +1,153 @@
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import ListProduct from "./ListProduct";
+function Catogerias() {
+  const listProduct = useSelector((state) => state.listProduct);
+  const [productShow, setProductShow] = useState();
+  // Phần catogerias, lọc ra các sản phẩm hiển thị theo catogerias
+  useEffect(() => {
+    listProduct && listProduct.length !== 0 && setProductShow(listProduct);
+  }, [listProduct]);
+  // Hàm xử lí lúc lọc
+  function filterProduct(nameProduct) {
+    let product = listProduct.filter((res) => {
+      return res.category === nameProduct;
+    });
+    setProductShow(product);
+  }
+  return (
+    <div className="container d-flex text-left">
+      <div className="col-1">
+        <input
+          id="search"
+          placeholder="Enter Search Here!"
+          className="py-2 px-4 text-secondary border border-secondary rounded"
+          onChange={(e) => {
+            listProduct &&
+              Array.isArray(listProduct) &&
+              listProduct.length !== 0 &&
+              setProductShow(
+                listProduct.filter((res) => {
+                  return res.category.includes(e.target.value);
+                })
+              );
+          }}
+        />
+      </div>
+      <div className="container d-flex g-2">
+        <div className="col-3 ">
+          <h2 className="px-5 fw-normal w-100 p-5">CATEGORIES</h2>
+          <h3 className="w-100 border-0 fw-lighter py-3  bg-dark text-light px-5">
+            APPLE
+          </h3>
+          <button
+            onClick={() => {
+              return setProductShow(listProduct);
+            }}
+            className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2 "
+          >
+            <span className="col-5  "> All </span>
+            <span className="col-7"> </span>
+          </button>
+          <div className="">
+            <h3 className="w-100 border-0  bg-light text-dark fs-4 px-5 py-2">
+              IPHONE & MAC
+            </h3>
+            <button
+              onClick={() => {
+                filterProduct("iphone");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Iphone </span>
+              <span className="col-7"> </span>
+            </button>
+            <button
+              onClick={() => {
+                filterProduct("ipad");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Ipad </span>
+              <span className="col-7"> </span>
+            </button>
+            <button
+              onClick={() => {
+                filterProduct("macbook");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Macbook </span>
+              <span className="col-7"> </span>
+            </button>
+          </div>
+          <div className="">
+            <h3 className="w-100 border-0  bg-light text-dark fs-4 px-5 py-2">
+              WIRELESS
+            </h3>
+            <button
+              onClick={() => {
+                filterProduct("airpod");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Airpot </span>
+              <span className="col-7"> </span>
+            </button>
+            <button
+              onClick={() => {
+                filterProduct("watch");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Watch </span>
+              <span className="col-7"> </span>
+            </button>
+          </div>
+          <div className="">
+            <h3 className="w-100 border-0  bg-light text-dark fs-4 px-5">
+              OTHER
+            </h3>
+            <button
+              onClick={() => {
+                filterProduct("mouse");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Mouse </span>
+              <span className="col-7"> </span>
+            </button>
+            <button
+              onClick={() => {
+                filterProduct("keyboard");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2 "
+            >
+              <span className="col-5  "> Keyboard </span>
+              <span className="col-7"> </span>
+            </button>
+            <button
+              onClick={() => {
+                filterProduct("orther");
+              }}
+              className="w-100 border-0 bg-transparent row text-secondary fst-italic fs-4 py-2"
+            >
+              <span className="col-5  "> Other </span>
+              <span className="col-7"> </span>
+            </button>
+          </div>
+        </div>
+        <div className=" col-9 px-3">
+          {productShow &&
+            Array.isArray(productShow) &&
+            productShow.length !== 0 && (
+              <ListProduct data={productShow}></ListProduct>
+            )}
+        </div>
+      </div>
+      <div className="col-1"></div>
+    </div>
+  );
+}
+
+export default Catogerias;
