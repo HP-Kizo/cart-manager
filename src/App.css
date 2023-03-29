@@ -61,6 +61,7 @@ html {
 }
 #popup {
   margin-top: 90px;
+  height: 70vh;
 }
 .name_product {
   padding-top: 40px;
@@ -71,11 +72,10 @@ html {
 .close_popup {
   position: absolute;
   top: 15%;
-  right: 15%;
+  right: 8%;
 }
 .text_product {
   overflow: auto;
-  height: 400px;
 }
 button img {
   animation: zoom 0.7s;
@@ -127,8 +127,12 @@ button img {
 }
 
 #search {
-  position: absolute;
-  left: 33%;
+  /* position: absolute;
+  top: 32%;
+  left: 38%;
+  width: 50%; */
+  height: 30px;
+  margin-top: 26px;
 }
 
 .quantity {
@@ -148,4 +152,69 @@ button img {
   top: 0;
   left: 55%;
   padding: 0;
+}
+
+@media (min-width: 650px) and (max-width: 1024px) {
+  #img_banner {
+    transform: translateY(30%);
+  }
+
+  #text_banner {
+    transform: scale(0.8);
+    top: 30%;
+  }
+}
+.item_price {
+  transform: translateY(-25%);
+}
+
+@media (max-width: 776px) {
+  .item_price {
+    transform: translateY(-18%);
+  }
+}
+
+@media (max-width: 650px) {
+  #img_banner {
+    transform: translateY(30%);
+  }
+
+  #text_banner {
+    transform: scale(0.8);
+    top: 18%;
+  }
+}
+@media (max-width: 500px) {
+  #img_banner {
+    transform: translateY(30%);
+  }
+
+  #text_banner {
+    transform: scale(0.4);
+    top: 18%;
+    left: 0%;
+  }
+}
+
+.product_input {
+  height: 40px;
+}
+
+.short_text_popup {
+  height: 180px;
+  overflow: scroll;
+}
+
+@media (min-width: 992px) {
+  .short_text_popup {
+    height: 180px;
+    overflow: scroll;
+  }
+  #popup {
+    margin-left: 5vh;
+    margin-right: 5vh;
+  }
+}
+.noibat {
+  height: 200px;
 }

@@ -1,7 +1,21 @@
 .out {
   position: relative;
   height: 80vh;
+  background-color: #f4f5f9;
 }
+
+@media (min-width: 500px) and (max-width: 1000px) {
+  .out {
+    height: 50vh;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 500px) {
+  .out {
+    height: 30vh;
+  }
+}
+
 .content_banner {
   position: absolute;
   top: 30%;

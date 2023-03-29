@@ -20,11 +20,10 @@ function ShopPage() {
       <div className="container p-4 bg-light mt-5"></div>
       <div
         className="container d-flex  
-      p-5 bg-light "
+      p-5 bg-light justify-content-around mt-3"
       >
+        <h2 className="fw-bold mx-5 fst-italic">SHOP</h2>
         <div className="col-2"></div>
-        <h2 className="fw-bold mx-5">SHOP</h2>
-        <div className="col-6"></div>
         <p className="text-secondary mx-5 fs-4">SHOP</p>
       </div>
       <div className="p-4 container bg-light"></div>

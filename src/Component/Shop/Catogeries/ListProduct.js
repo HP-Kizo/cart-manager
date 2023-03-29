@@ -10,7 +10,7 @@ function ListProduct({ data }) {
         {data.map((res) => {
           return (
             <button
-              className="col-4 border-0 button"
+              className="col-6 col-md-4 border-0 button"
               onClick={() => {
                 dispatch({ type: SHOW_POPUP, data_popup: res });
               }}

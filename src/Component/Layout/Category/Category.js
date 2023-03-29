@@ -18,8 +18,8 @@ function Category() {
           <p className="fs-3 fw-bold fst-italic">BROWSE OUR CATEGORIES</p>
         </div>
         <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
+          <div className="col-lg-2 col-md-1 "></div>
+          <div className="col-lg-8 col-md-10 col-sm-12">
             <div className="container-fluid">
               <div className="row catogery g-2">
                 <NavLink to="/shop" className="col-6">
@@ -42,7 +42,7 @@ function Category() {
               </div>
             </div>
           </div>
-          <div className="col-2"></div>
+          <div className="col-lg-2 col-md-1"></div>
         </div>
       </div>
     </>

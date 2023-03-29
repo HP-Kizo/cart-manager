@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import NavBar from "../Layout/NavBar";
 import styles from "./Detail.module.css";
 import { ADD_CART } from "../../store/context";
@@ -10,7 +10,7 @@ function DetailPage() {
   const param = useParams();
   const dispatch = useDispatch();
   const cart_manager = useSelector((state) => state.cart_manager);
-
+  const navigate = useNavigate();
   const listProduct = useSelector((state) => state.listProduct);
   const separateNumber = useSelector((state) => state.separateNumber);
   const [detailData, setDetailData] = useState();
@@ -21,7 +21,6 @@ function DetailPage() {
 
   // Mỗi khi cart thay đổi thì gửi 1 dispatch để cập nhật lại dữ liệu trên redux
   //---------------------------------------------------------------------------------------------------------------------------
-
   useEffect(() => {
     cart &&
       Array.isArray(cart) &&
@@ -76,7 +75,6 @@ function DetailPage() {
   };
   //  -----------------------------------------------------------------------------------------------------------------------
 
-  const navigate = useNavigate();
   // Lấy toàn bộ dữ liệu của sản phẩm đã chọn
   useEffect(() => {
     listProduct &&
@@ -87,7 +85,9 @@ function DetailPage() {
           return res._id.$oid === param.id;
         })
       );
-  }, [listProduct]);
+  }, [listProduct, param]);
+  const [parts, setParts] = useState();
+
   // Tìm các sản phẩm cùng category với sản phẩm chính rồi lưu lại
   //---------------------------------------------------------------------------------------------------------------------------
 
@@ -105,25 +105,32 @@ function DetailPage() {
           );
         })
       );
+    detailData &&
+      detailData.length !== 0 &&
+      setParts(detailData[0].long_desc.split("•"));
   }, [detailData]);
 
+  console.log(parts);
   return (
     <>
       <NavBar></NavBar>
       {detailData && detailData.length !== 0 && (
         <div className="container pt-5 mt-5">
           <div className="row mt-5">
-            <div className="col-2">
-              <img src={`${detailData[0].img4}`} className={styles.img_small} />
-              <img src={`${detailData[0].img3}`} className={styles.img_small} />
-              <img src={`${detailData[0].img2}`} className={styles.img_small} />
-              <img src={`${detailData[0].img1}`} className={styles.img_small} />
+            <div className="container-fluid d-flex justify-content-center col-sm-8 col-md-8 col-lg-5">
+              <div className="col-2 col-lg-2">
+                <img src={`${detailData[0].img4}`} className={`w-100`} />
+                <img src={`${detailData[0].img3}`} className={`w-100`} />
+                <img src={`${detailData[0].img2}`} className={`w-100`} />
+                <img src={`${detailData[0].img1}`} className={`w-100`} />
+              </div>
+              <div className="col-1"></div>
+              <div className="col-8 ">
+                <img src={`${detailData[0].img1}`} className="w-100" />
+              </div>
             </div>
-            <div className="col-5">
-              <img src={`${detailData[0].img1}`} className={styles.img_big} />
-            </div>
-            <div className="col-5">
-              <h2 className="fw-border fs-2 text-uppercase fst-italic">
+            <div className="col-lg-5 mt-5 text-secondary">
+              <h2 className="fw-border fs-2 text-uppercase fst-italic ">
                 {detailData[0].name}
               </h2>
               <p className="fw-normal fs-4">
@@ -133,7 +140,7 @@ function DetailPage() {
               <p className="fw-normal text-uppercase">
                 CATEGORY: {detailData[0].category}
               </p>
-              <label className="row">
+              <label className="row justify-content-center">
                 <input
                   type="number"
                   className="col-6"
@@ -155,21 +162,38 @@ function DetailPage() {
           <div>
             <h4 className="fw-bold fs-2 mt-5">DESCRIPTION</h4>
             <h5 className="fw-bolder fs-4 mt-4">PRODUCT DESCRIPTION</h5>
-            <p className="fst-italic px-5">{detailData[0].long_desc}</p>
+
+            <div className="fst-italic mt-3  text-secondary text-start d-lg-block short_text_popup overflow-auto noibat">
+              {parts && parts.length !== 0 && (
+                <>
+                  <p className="px-5 fs-4 fw-bold">{parts[0]}</p>
+                  {parts.map((res, index) => {
+                    if (index === 0) {
+                      return;
+                    } else return <p className="px-5">• {res}</p>;
+                  })}
+                </>
+              )}
+            </div>
           </div>
           <div>
             <p className="fw-bolder fs-4 mt-4">RELATED PRODUCTS</p>
-            <div className="d-flex text-center">
+            <div className="row text-center border-0 justify-content-center">
               {related &&
                 Array.isArray(related) &&
                 related.length !== 0 &&
                 related.map((res) => {
                   return (
-                    <div className="container">
+                    <button
+                      className="container bg-transparent col-8 col-sm-5 border-0 mx-3 mt-2"
+                      onClick={() => {
+                        navigate(`/detail/${res._id.$oid}`);
+                      }}
+                    >
                       <img src={res.img1} className="w-50" />
                       <p className="fs-5">{res.name}</p>
-                      <p className="fs-5">{res.price} VND</p>
-                    </div>
+                      <p className="fs-5">{separateNumber(res.price)} VND</p>
+                    </button>
                   );
                 })}
             </div>

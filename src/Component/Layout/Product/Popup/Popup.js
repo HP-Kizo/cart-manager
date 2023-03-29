@@ -2,58 +2,73 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { HIDE_POPUP } from "../../../../store/context";
+import { IconManager } from "../../../Icon/Icon";
 function Popup() {
   const data_popup = useSelector((state) => state.data_popup);
   // popup nhận dữ liêu từ redux khi người dùng nhấn xem sản phẩm
   const separateNumber = useSelector((state) => state.separateNumber);
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const parts = data_popup.long_desc.split("•");
+  console.log(parts);
 
   return (
     data_popup && (
       <div className="container-fluid fixed-top background h-100 ">
-        <div id="popup" className="container d-flex g-1 bg-light w-75 h-75">
-          <div className="col-6  pt-5 ">
-            <img src={data_popup.img1} className="h-100 w-100 px-5" />
-          </div>
-          <div className="col-5">
-            <div className=" pt-5 px-5 fst-italic text_product ">
-              <h2 className="name_product">{data_popup.name}</h2>
-              <h4 className="mt-4">{separateNumber(data_popup.price)} VND</h4>
-              <p className="fst-italic mt-3  text-secondary">
-                {data_popup.long_desc}
-              </p>
+        <div id="popup" className="container-fuild  g-1 bg-light">
+          <div className="container-fluid container-lg-75 d-flex w-75">
+            <div className="col-6 col-md-6  pt-5 ">
+              <img src={data_popup.img1} className=" w-100 px-md-5 mt-lg-5" />
             </div>
-            <div className="mt-5 px-5 fst-italic">
-              <NavLink
-                className="border-0 p-4 bg-dark text-light fs-4  "
-                to={`/detail/${data_popup._id.$oid}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="white"
-                  class="bi bi-cart"
-                  viewBox="0 0 24 24"
+            <div className="col-6 col-md-6">
+              <div className=" pt-5  text-center fst-italic text_product ">
+                <h2 className="name_product ">{data_popup.name}</h2>
+                <h4 className="mt-4">{separateNumber(data_popup.price)} VND</h4>
+                <div className="fst-italic mt-3  text-secondary d-none text-start d-lg-block short_text_popup overflow-auto">
+                  <p className="px-5 fs-4 fw-bold">{parts[0]}</p>
+                  {parts.map((res, index) => {
+                    if (index === 0) {
+                      return;
+                    } else return <p className="px-5">• {res}</p>;
+                  })}
+                </div>
+              </div>
+              <div className="mt-5  fst-italic d-flex justify-content-center">
+                <NavLink
+                  className="border-0 p-3  bg-dark text-light fs-5   "
+                  to={`/detail/${data_popup._id.$oid}`}
                 >
-                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                </svg>
-                View Detail
-              </NavLink>
+                  <div className="d-none d-sm-inline">
+                    {IconManager.cart_no_2}
+                  </div>
+                  <div className="text-muted d-inline">View Detail</div>
+                </NavLink>
+              </div>
             </div>
-          </div>
 
-          <div className="col-1"></div>
+            <div className="col-1"></div>
+          </div>
+          <div className=" fst-italic mt-3  text-secondary d-block d-lg-none d-flex short_text_popup">
+            <div className="col-2"></div>
+            <div className="col-8 ">
+              <p className="px-5 fs-2 fw-bold ">{parts[0]}</p>
+              {parts.map((res, index) => {
+                if (index === 0) {
+                  return;
+                } else return <p className="px-5">• {res}</p>;
+              })}
+            </div>
+            <div className="col-2"></div>
+          </div>
+          <button
+            onClick={() => {
+              dispatch({ type: HIDE_POPUP });
+            }}
+            className="close_popup border-0 p-1 bg-light"
+          >
+            {IconManager.cancel}
+          </button>
         </div>
-        <button
-          onClick={() => {
-            dispatch({ type: HIDE_POPUP });
-          }}
-          className="close_popup border-0 p-4"
-        >
-          X
-        </button>
       </div>
     )
   );
